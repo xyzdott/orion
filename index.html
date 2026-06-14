@@ -33,9 +33,10 @@ html[lang="en"] .es{display:none}
 html[lang="es"] .en{display:none}
 
 /* CURSOR */
+#cur-star{display:none}
 @media(pointer:fine){
   *{cursor:none!important}
-  #cur-star{position:fixed;z-index:9999;pointer-events:none;top:0;left:0;will-change:transform}
+  #cur-star{display:block;position:fixed;z-index:9999;pointer-events:none;top:0;left:0;will-change:transform}
   #cur-star svg{display:block;width:20px;height:20px;mix-blend-mode:difference;animation:star-spin 8s linear infinite;transition:width .25s var(--ease),height .25s var(--ease)}
   #cur-star.hov svg{width:30px;height:30px}
 }
