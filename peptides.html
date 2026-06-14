@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Peptide Therapies | Orión Médica</title>
+<meta name="description" content="Eight precision peptide therapies — BPC-157, NAD+, MOTS-C, GHK-Cu, Glutathione, CJC-1295, Retatrutide, and Glow. Each backed by peer-reviewed research.">
+<meta name="theme-color" content="#060c1e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --n950:#060c1e;--n900:#080e24;--n800:#0d1b3e;--n700:#12265a;
+  --g600:#8b6914;--g500:#c9a84c;--g400:#d4b96a;--g300:#e6d4a4;
+  --t1:#f5f0e8;--t2:rgba(245,240,232,.76);--t3:rgba(245,240,232,.52);
+  --bd:rgba(201,168,76,.16);--bdh:rgba(201,168,76,.46);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fd:'Instrument Serif',serif;--fs:'DM Sans',sans-serif;--fi:'Inter',sans-serif;
+  --or:clamp(220px,32vmin,340px);
+  --or7:calc(var(--or)*.707);
+  --bw:55px;--bh:75px
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fs);background:var(--n950);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.65}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--fd);font-weight:400;line-height:1.08}
+.hi{color:var(--g400)}
+button{font-family:var(--fs)}
+:focus-visible{outline:2px solid var(--g500);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+html[lang="en"] .es{display:none}
+html[lang="es"] .en{display:none}
+
+/* CURSOR */
+@media(pointer:fine){
+  *{cursor:none!important}
+  #cur-star{position:fixed;z-index:9999;pointer-events:none;top:0;left:0;will-change:transform}
+  #cur-star svg{display:block;width:20px;height:20px;mix-blend-mode:difference;animation:star-spin 8s linear infinite;transition:width .25s var(--ease),height .25s var(--ease)}
+  #cur-star.hov svg{width:30px;height:30px}
+}
+@keyframes star-spin{to{transform:rotate(360deg)}}
+
+/* PROGRESS */
+#pgbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:600;background:linear-gradient(90deg,var(--g600),var(--g500),var(--g300));transform-origin:left;transform:scaleX(0);pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:26px 60px;display:flex;align-items:center;justify-content:space-between;transition:padding .4s var(--ease),background .4s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(6,12,30,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--bd);padding:14px 60px}
+.nav-logo img{height:38px;width:auto;transition:height .4s var(--ease);filter:drop-shadow(0 0 16px rgba(201,168,76,.18));opacity:.92}
+nav.sc .nav-logo img{height:28px;opacity:1}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.03em;color:var(--t2);transition:color .25s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--g400);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav-links a:hover{color:var(--t1)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-r{display:flex;align-items:center;gap:16px}
+.lt{display:flex;align-items:center;gap:1px}
+.lb{background:none;border:none;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--t3);padding:5px 6px;transition:color .2s;cursor:pointer}
+.lb.on{color:var(--g400)}.ls{color:rgba(201,168,76,.22);font-size:11px}
+.nav-cta{display:inline-flex;align-items:center;font-family:var(--fd);font-size:15px;font-weight:400;letter-spacing:.01em;text-transform:none;padding:0;border:none;background:transparent;color:var(--g300);position:relative;cursor:pointer;transition:color .25s}
+.nav-cta::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--g400);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-cta:hover{color:var(--g400)}.nav-cta:hover::after{transform:scaleX(1)}
+.hbg{display:none;background:none;border:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.hbg span{display:block;width:22px;height:1px;background:var(--t1);transition:all .3s}
+.mob{position:fixed;inset:0;background:var(--n950);z-index:490;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;transform:translateX(100%);transition:transform .45s var(--ease)}
+.mob.open{transform:translateX(0)}
+.mob a,.mob button{font-family:var(--fd);font-size:26px;color:var(--t1);transition:color .25s;background:none;border:none;cursor:pointer}
+.mob a:hover,.mob button:hover{color:var(--g400)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--fd);font-size:clamp(18px,2vw,24px);font-weight:400;letter-spacing:.01em;text-transform:none;border:none;background:transparent;padding:0;position:relative;cursor:pointer;color:var(--t1);line-height:1.1}
+.btn::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .44s var(--ease)}
+.btn:hover::after{transform:scaleX(1)}
+.btn-g{color:var(--g400)}
+.btn-o{color:var(--t2)}
+
+/* PEPTIDES HERO */
+.pep-hero{position:relative;height:max(100vh,calc(var(--or)*2 + 360px));min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+#star-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70vw;height:70vw;max-width:700px;max-height:700px;background:radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,rgba(13,27,62,.18) 45%,transparent 70%);z-index:1;pointer-events:none}
+.pep-hero-inner{position:relative;z-index:2;max-width:380px;padding:0 24px}
+.pep-hero-eye{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--g500);margin-bottom:22px;opacity:0;animation:fu .8s .3s forwards}
+.pep-hero-h1{font-family:var(--fd);font-size:clamp(42px,7vw,84px);font-weight:400;line-height:1.05;letter-spacing:-.01em;opacity:0;animation:fu .9s .5s forwards}
+.pep-hero-h1 em{color:var(--g400);font-style:normal;display:block}
+.pep-hero-sub{font-family:var(--fd);font-size:16px;font-style:italic;font-weight:400;color:var(--t2);margin-top:18px;opacity:0;animation:fu .8s 1s forwards}
+
+/* ORBIT */
+.orb-wrap{position:absolute;inset:0;z-index:3}
+.orb-slot{
+  position:absolute;width:110px;height:150px;
+  background:none;border:none;padding:0;-webkit-appearance:none;cursor:pointer;
+  --bw:55px;--bh:75px
+}
+.orb-slot:nth-child(1){left:calc(50% - var(--bw));top:calc(50% - var(--or) - var(--bh))}
+.orb-slot:nth-child(2){left:calc(50% + var(--or7) - var(--bw));top:calc(50% - var(--or7) - var(--bh))}
+.orb-slot:nth-child(3){left:calc(50% + var(--or) - var(--bw));top:calc(50% - var(--bh))}
+.orb-slot:nth-child(4){left:calc(50% + var(--or7) - var(--bw));top:calc(50% + var(--or7) - var(--bh))}
+.orb-slot:nth-child(5){left:calc(50% - var(--bw));top:calc(50% + var(--or) - var(--bh))}
+.orb-slot:nth-child(6){left:calc(50% - var(--or7) - var(--bw));top:calc(50% + var(--or7) - var(--bh))}
+.orb-slot:nth-child(7){left:calc(50% - var(--or) - var(--bw));top:calc(50% - var(--bh))}
+.orb-slot:nth-child(8){left:calc(50% - var(--or7) - var(--bw));top:calc(50% - var(--or7) - var(--bh))}
+.orb-float{position:relative;width:100%;height:100%;animation:orb-float 4s ease-in-out infinite}
+.orb-slot:nth-child(1) .orb-float{animation-duration:4.2s;animation-delay:0s}
+.orb-slot:nth-child(2) .orb-float{animation-duration:3.7s;animation-delay:-1.1s}
+.orb-slot:nth-child(3) .orb-float{animation-duration:4.6s;animation-delay:-2.4s}
+.orb-slot:nth-child(4) .orb-float{animation-duration:3.9s;animation-delay:-0.7s}
+.orb-slot:nth-child(5) .orb-float{animation-duration:4.1s;animation-delay:-3.2s}
+.orb-slot:nth-child(6) .orb-float{animation-duration:4.8s;animation-delay:-1.8s}
+.orb-slot:nth-child(7) .orb-float{animation-duration:3.5s;animation-delay:-0.4s}
+.orb-slot:nth-child(8) .orb-float{animation-duration:4.4s;animation-delay:-2.6s}
+@keyframes orb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.orb-img-wrap{width:100%;height:100%;transition:transform .35s var(--ease)}
+.orb-slot:hover .orb-img-wrap{transform:scale(1.1)}
+.orb-img-wrap img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(0,0,0,.6))}
+.orb-star{width:100%;height:100%;display:block;overflow:visible}
+.orb-mob-star{width:56px;height:56px;display:block;overflow:visible;transition:transform .3s var(--ease)}
+.orb-mob-item:hover .orb-mob-star{transform:scale(1.1)}
+.orb-label{
+  position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);
+  font-family:var(--fd);font-size:13px;letter-spacing:.02em;white-space:nowrap;
+  pointer-events:none;opacity:0;transition:opacity .22s;
+  background:linear-gradient(90deg,var(--g500) 0%,var(--g400) 25%,#fffce0 50%,var(--g400) 75%,var(--g500) 100%);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:glint-run 3.8s linear infinite;animation-play-state:paused
+}
+.orb-slot:hover .orb-label{opacity:1;animation-play-state:running}
+.orb-slot:nth-child(1) .orb-label,
+.orb-slot:nth-child(2) .orb-label,
+.orb-slot:nth-child(8) .orb-label{bottom:auto;top:calc(100% + 4px)}
+
+/* PEPTIDE OVERLAY */
+.pep-ov{
+  position:fixed;inset:0;z-index:700;
+  background:#000;
+  overflow:hidden;
+  clip-path:inset(49%);
+  opacity:0;
+  transition:clip-path .72s cubic-bezier(.16,1,.3,1),opacity .15s ease;
+  font-family:var(--fs)
+}
+.pep-ov.open{clip-path:inset(0%);opacity:1}
+
+/* Stars layer */
+.pov-stars{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.pov-star{position:absolute;animation:pov-twinkle 3s ease-in-out infinite}
+@keyframes pov-twinkle{
+  0%,100%{opacity:.04;transform:scale(.88) rotate(0deg)}
+  50%{opacity:.26;transform:scale(1.14) rotate(22.5deg)}
+}
+
+/* Subtle close */
+.pep-ov-x{
+  position:absolute;top:22px;right:26px;z-index:2;
+  background:none;border:none;padding:6px;
+  color:rgba(212,185,106,.2);font-family:var(--fs);
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;transition:color .2s
+}
+.pep-ov-x:hover{color:rgba(212,185,106,.5)}
+
+/* Giant watermark number */
+.pov-num-bg{
+  position:absolute;z-index:0;
+  bottom:1%;right:3%;
+  font-size:clamp(190px,27vw,310px);
+  font-weight:900;letter-spacing:-.06em;
+  color:rgba(212,185,106,.032);
+  line-height:1;pointer-events:none;user-select:none;
+  font-family:var(--fs)
+}
+
+/* ── OVERLAY LAYOUT ──────────────────────────────────────────
+   Top        : category label (left) | buttons (right)
+   Middle-top : description — Inter, cream, big
+   Middle     : benefits — large manifesto statements
+   Middle-bot : citations (small)
+   Bottom     : name floating chars (left) | bottle image (right)
+────────────────────────────────────────────────────────────── */
+
+.pov-num{display:none}
+
+/* Top-left: category label */
+.pov-cat{
+  position:absolute;z-index:2;
+  top:7%;left:7%;
+  font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(212,185,106,.44);
+  border-bottom:1px solid rgba(212,185,106,.14);padding-bottom:6px
+}
+
+/* Description — Inter, large, cream */
+.pov-desc{
+  position:absolute;z-index:1;
+  top:15%;left:7%;width:52%;
+  font-family:var(--fi);
+  font-size:clamp(15px,1.55vw,21px);font-weight:400;
+  color:rgba(240,232,215,.8);
+  line-height:1.9
+}
+
+/* Benefits — large manifesto statements, left */
+#pov-bens{
+  position:absolute;z-index:1;
+  top:35%;left:7%;
+  list-style:none;width:57%
+}
+.pov-ben{
+  font-family:var(--fi);
+  font-size:clamp(17px,2.1vw,28px);font-weight:700;
+  color:rgba(212,185,106,.92);
+  line-height:1.2;padding:15px 0;
+  border-top:1px solid rgba(212,185,106,.1)
+}
+.pov-ben-n{display:none}
+
+/* Citations — small, left, below benefits */
+#pov-refs{
+  position:absolute;z-index:1;
+  top:60%;left:7%;
+  width:50%
+}
+.pov-ref{
+  font-size:10px;font-weight:400;
+  color:rgba(212,185,106,.18);line-height:1.72
+}
+.pov-ref sup{color:rgba(212,185,106,.3);font-size:8px;margin-right:2px}
+
+/* Bottom-left: tagline + name */
+.pov-hero{
+  position:absolute;z-index:1;
+  bottom:10%;left:7%
+}
+.pov-tag{
+  font-size:clamp(14px,1.6vw,22px);font-weight:300;font-style:italic;
+  color:rgba(212,185,106,.52);margin-bottom:14px;
+  font-family:var(--fd)
+}
+.pov-name{
+  font-family:var(--fi);
+  font-size:clamp(56px,7.8vw,112px);
+  font-weight:900;line-height:.88;
+  letter-spacing:-.03em;
+  color:var(--g400);
+  max-width:55vw
+}
+
+/* Floating char animation */
+@keyframes char-float{
+  0%,100%{transform:translateY(0) rotate(var(--cr,0deg))}
+  50%{transform:translateY(-8px) rotate(calc(var(--cr,0deg) + 1.8deg))}
+}
+.pov-char{
+  display:inline-block;will-change:transform;
+  animation:char-float 3s ease-in-out infinite
+}
+.pov-char-sp{display:inline-block;width:.24em}
+
+/* Bottle image — floats right side in empty space, 0-gravity bob */
+.pov-bottle{
+  position:absolute;z-index:1;
+  right:6%;top:50%;
+  height:auto;max-height:62vh;width:auto;
+  pointer-events:none;opacity:.9;
+  animation:bottle-float 4.6s ease-in-out infinite;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 8%,black 88%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,black 8%,black 88%,transparent 100%)
+}
+@keyframes bottle-float{
+  0%,100%{transform:translateY(-50%) rotate(-8deg)}
+  35%{transform:translateY(calc(-50% - 16px)) rotate(-5.5deg)}
+  65%{transform:translateY(calc(-50% - 9px)) rotate(-10.5deg)}
+}
+
+/* Buttons — top-right, bigger */
+.pep-ov-btns{
+  position:absolute;z-index:2;
+  top:6%;right:9%;
+  display:flex;gap:28px;align-items:center
+}
+.pep-ov-btn{
+  background:none;border:none;
+  font-family:var(--fi);font-size:13px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(212,185,106,.62);cursor:pointer;
+  padding:0;position:relative;transition:color .22s
+}
+.pep-ov-btn::after{
+  content:'';position:absolute;
+  top:50%;left:0;right:0;height:1px;
+  background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .32s var(--ease)
+}
+.pep-ov-btn:hover{color:var(--g400)}
+.pep-ov-btn:hover::after{transform:scaleX(1)}
+
+/* TYPOGRAPHIC BOTTLE — clip-path silhouette */
+.typo-bottle{
+  display:flex;flex-direction:column;align-items:stretch;justify-content:center;
+  height:100%;width:100%;gap:0;
+  font-family:var(--fs);font-weight:800;font-size:11px;letter-spacing:.38em;
+  color:var(--g400);
+  /* Vial/ampoule silhouette: narrow cap → narrow neck → wide body → base */
+  clip-path:polygon(
+    37% 2%,  63% 2%,
+    65% 6%,  65% 17%,
+    81% 29%, 82% 76%,
+    80% 84%, 79% 91%,
+    21% 91%, 20% 84%,
+    18% 76%, 19% 29%,
+    35% 17%, 35% 6%,
+    37% 2%
+  )
+}
+.typo-bottle span{
+  display:block;white-space:nowrap;line-height:1.45;
+  text-align:center;width:100%
+}
+.typo-c{
+  font-weight:900;
+  text-shadow:0 0 18px rgba(212,185,106,.7),0 0 44px rgba(212,185,106,.28)
+}
+
+/* MOBILE GRID */
+.orb-mobile-section{display:none;background:var(--n950);padding:10px 24px 60px}
+.orb-mobile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 10px;max-width:460px;margin:0 auto}
+.orb-mob-item{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:6px 0}
+.orb-mob-item img{width:56px;height:80px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5));transition:transform .3s var(--ease)}
+.orb-mob-item:hover img{transform:scale(1.08)}
+.orb-mob-name{font-family:var(--fd);font-size:10px;text-align:center;color:var(--g400);line-height:1.3;white-space:nowrap}
+
+/* FOOTER */
+footer{background:rgba(2,5,16,.99);border-top:1px solid var(--bd);padding:60px 0 22px;position:relative;z-index:1}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:44px}
+.ft-brand img{height:34px;width:auto;margin-bottom:12px;opacity:.84}
+.ft-tag{font-size:14px;color:var(--t3);line-height:1.75;max-width:255px;margin-bottom:20px}
+.ft-soc{display:flex;gap:7px}
+.ft-sl{width:32px;height:32px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:13px;transition:all .25s}
+.ft-sl:hover{border-color:var(--g500);color:var(--g400)}
+.ft-h{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g500);margin-bottom:14px}
+.ft-ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ft-ul a{font-size:14px;color:var(--t3);transition:color .2s}.ft-ul a:hover{color:var(--g400)}
+.ft-bot{border-top:1px solid var(--bd);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.ft-copy{font-size:12px;color:var(--t3)}
+
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(4,8,22,.72);z-index:800;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.modal-ov.open{opacity:1;pointer-events:all}
+.modal{background:rgba(8,16,42,.78);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(201,168,76,.22);max-width:540px;width:100%;padding:46px;position:relative;transform:translateY(22px);transition:transform .4s var(--ease);max-height:90vh;overflow-y:auto}
+.modal-ov.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--t3);font-size:18px;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center;transition:color .2s}
+.modal-close:hover{color:var(--t1)}
+.modal-title{font-family:var(--fd);font-size:30px;font-weight:400;margin-bottom:4px}
+.modal-sub{font-size:13px;color:var(--t3);margin-bottom:28px}
+.form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--t3)}
+.fg input,.fg select,.fg textarea{background:rgba(13,27,62,.65);border:1px solid var(--bd);color:var(--t1);font-family:var(--fs);font-size:14px;padding:10px 13px;transition:border-color .25s,box-shadow .25s;outline:none;width:100%;-webkit-appearance:none;border-radius:0}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--t3)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--g500);box-shadow:0 0 0 3px rgba(201,168,76,.08)}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;cursor:pointer}
+.fg select option{background:var(--n800)}
+.fg textarea{resize:vertical;min-height:90px}
+.form-note{font-size:11px;color:var(--t3);line-height:1.6}
+.form-ok{display:none;text-align:center;padding:28px 0}
+.form-ok-title{font-family:var(--fd);font-size:28px;color:var(--g400);margin-bottom:8px}
+.form-ok-sub{font-size:13px;color:var(--t3)}
+
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* GLINT TEXT */
+.glint-u{
+  background:linear-gradient(90deg,var(--g500) 0%,var(--g400) 25%,#fffce0 50%,var(--g400) 75%,var(--g500) 100%);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:glint-run 3.8s linear infinite;
+  display:inline-block;padding:.06em .06em .2em;margin:-.06em -.06em -.2em;line-height:inherit
+}
+/* Beats .pep-hero-h1 em{display:block} (0,1,1) so background-clip:text covers full text width */
+.pep-hero-h1 .glint-u{display:inline-block}
+@keyframes glint-run{0%{background-position:100% 0}42%{background-position:0% 0}42.01%,100%{background-position:100% 0}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav,nav.sc{padding-left:36px;padding-right:36px}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  #pov-bens{width:60%}
+  .pov-desc{width:56%}
+  #pov-refs{width:54%}
+}
+@media(max-width:900px){
+  :root{--or:clamp(170px,28vmin,260px)}
+  .orb-slot{width:84px;height:116px;--bw:42px;--bh:58px}
+  .orb-label{font-size:11px}
+  .pov-name{font-size:clamp(44px,6.5vw,80px);max-width:60vw}
+  #pov-bens,.pov-desc{width:62%}
+  #pov-refs{width:56%}
+  .pov-num-bg{font-size:clamp(140px,20vw,200px)}
+  .pov-bottle{max-height:52vh}
+}
+@media(max-width:640px){
+  nav,nav.sc{padding:14px 20px}
+  .nav-links,.nav-cta{display:none}
+  .hbg{display:flex}
+  .orb-wrap{display:none}
+  .orb-mobile-section{display:block}
+  .form-row{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr;gap:30px}
+  .ft-bot{flex-direction:column;text-align:center}
+  /* Overlay mobile: linear layout */
+  .pep-ov{overflow-y:auto;display:flex;flex-direction:column;padding:56px 22px 40px;gap:16px}
+  .pov-stars{display:none}
+  .pov-bottle{display:none}
+  .pep-ov-x{position:fixed}
+  .pov-cat,#pov-bens,.pov-desc,#pov-refs,.pov-hero,.pep-ov-btns{
+    position:static;width:100%;max-width:100%;text-align:left
+  }
+  .pep-ov-btns{top:auto;right:auto;margin-bottom:4px}
+  .pov-desc{font-size:15px;line-height:1.78}
+  #pov-bens{margin-top:6px}
+  .pov-ben{font-size:17px;padding:12px 0}
+  .pov-hero{margin-top:16px}
+  .pov-name{font-size:clamp(48px,13vw,72px);max-width:100%;flex-wrap:wrap}
+  .pov-num-bg{display:none}
+  .pep-ov-btns{flex-direction:row;gap:22px;margin-top:6px}
+}
+</style>
+</head>
+<body>
+<div id="cur-star" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L13.1 10 22 12 13.1 14 12 23 10.9 14 2 12 10.9 10Z" fill="white"/></svg></div>
+<div id="pgbar" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Orión Médica Home">
+    <img src="orionlogotype.png" alt="Orión Médica">
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html#about"><span class="en">About</span><span class="es">Nosotros</span></a></li>
+    <li><a href="index.html#process"><span class="en">Process</span><span class="es">Proceso</span></a></li>
+    <li><a href="index.html#testimonials"><span class="en">Stories</span><span class="es">Historias</span></a></li>
+    <li><a href="peptides.html"><span class="en">Peptides</span><span class="es">Péptidos</span></a></li>
+  </ul>
+  <div class="nav-r">
+    <div class="lt" role="group" aria-label="Language">
+      <button class="lb on" data-lang="en">EN</button>
+      <span class="ls" aria-hidden="true">|</span>
+      <button class="lb" data-lang="es">ES</button>
+    </div>
+    <button class="nav-cta" onclick="openModal()">
+      <span class="en">Book Consultation</span>
+      <span class="es">Agendar Consulta</span>
+    </button>
+    <button class="hbg" id="hbg" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mob" role="dialog" aria-label="Navigation menu">
+  <a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a>
+  <a href="index.html#about"><span class="en">About</span><span class="es">Nosotros</span></a>
+  <a href="index.html#process"><span class="en">Process</span><span class="es">Proceso</span></a>
+  <a href="peptides.html"><span class="en">Peptides</span><span class="es">Péptidos</span></a>
+  <button onclick="openModal();closeMob()"><span class="en">Book Consultation</span><span class="es">Agendar Consulta</span></button>
+</div>
+
+<!-- PEPTIDES HERO -->
+<section class="pep-hero">
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="pep-hero-inner">
+    <p class="pep-hero-eye en">Orión Médica &nbsp;·&nbsp; Peptide Therapies</p>
+    <p class="pep-hero-eye es">Orión Médica &nbsp;·&nbsp; Terapias con Péptidos</p>
+    <h1 class="pep-hero-h1">
+      <span class="en">Meet our<em class="glint-u">constellation</em></span>
+      <span class="es">Conoce nuestra<em class="glint-u">constelación</em></span>
+    </h1>
+    <p class="pep-hero-sub en">Not every star belongs in every sky. These eight were chosen for yours.</p>
+    <p class="pep-hero-sub es">No toda estrella pertenece a todo cielo. Estas ocho fueron elegidas para el tuyo.</p>
+  </div>
+
+  <!-- ORBIT BOTTLES (desktop) -->
+  <div class="orb-wrap" aria-hidden="true">
+    <button class="orb-slot" data-pep="0" aria-label="BPC-157 / TB-500">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="18" font-weight="800" fill="#0a0a0a">BPC</text>
+        </svg>
+      </div><span class="orb-label">BPC-157 / TB-500</span></div>
+    </button>
+    <button class="orb-slot" data-pep="1" aria-label="NAD+">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="15" font-weight="800" fill="#0a0a0a">NAD+</text>
+        </svg>
+      </div><span class="orb-label">NAD+</span></div>
+    </button>
+    <button class="orb-slot" data-pep="2" aria-label="MOTS-C">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="11" font-weight="800" fill="#0a0a0a">MOTS-C</text>
+        </svg>
+      </div><span class="orb-label">MOTS-C</span></div>
+    </button>
+    <button class="orb-slot" data-pep="3" aria-label="GHK-Cu">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="11" font-weight="800" fill="#0a0a0a">GHK-Cu</text>
+        </svg>
+      </div><span class="orb-label">GHK-Cu</span></div>
+    </button>
+    <button class="orb-slot" data-pep="4" aria-label="Glutathione">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="14" font-weight="800" fill="#0a0a0a">Gluta</text>
+        </svg>
+      </div><span class="orb-label">Glutathione</span></div>
+    </button>
+    <button class="orb-slot" data-pep="5" aria-label="CJC-1295">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="18" font-weight="800" fill="#0a0a0a">CJC</text>
+        </svg>
+      </div><span class="orb-label">CJC-1295</span></div>
+    </button>
+    <button class="orb-slot" data-pep="6" aria-label="Retatrutide">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="17" font-weight="800" fill="#0a0a0a">Reta</text>
+        </svg>
+      </div><span class="orb-label">Retatrutide</span></div>
+    </button>
+    <button class="orb-slot" data-pep="7" aria-label="Glow">
+      <div class="orb-float"><div class="orb-img-wrap">
+        <svg class="orb-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/>
+          <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="15" font-weight="800" fill="#0a0a0a">Glow</text>
+        </svg>
+      </div><span class="orb-label">Glow</span></div>
+    </button>
+  </div>
+</section>
+
+<!-- MOBILE BOTTLE GRID -->
+<section class="orb-mobile-section" aria-label="Peptide therapies">
+  <div class="orb-mobile-grid">
+    <button class="orb-mob-item" data-pep="0">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="18" font-weight="800" fill="#0a0a0a">BPC</text></svg>
+      <span class="orb-mob-name">BPC-157</span></button>
+    <button class="orb-mob-item" data-pep="1">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="15" font-weight="800" fill="#0a0a0a">NAD+</text></svg>
+      <span class="orb-mob-name">NAD+</span></button>
+    <button class="orb-mob-item" data-pep="2">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="11" font-weight="800" fill="#0a0a0a">MOTS-C</text></svg>
+      <span class="orb-mob-name">MOTS-C</span>
+    </button>
+    <button class="orb-mob-item" data-pep="3">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="11" font-weight="800" fill="#0a0a0a">GHK-Cu</text></svg>
+      <span class="orb-mob-name">GHK-Cu</span></button>
+    <button class="orb-mob-item" data-pep="4">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="14" font-weight="800" fill="#0a0a0a">Gluta</text></svg>
+      <span class="orb-mob-name">Glutathione</span></button>
+    <button class="orb-mob-item" data-pep="5">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="18" font-weight="800" fill="#0a0a0a">CJC</text></svg>
+      <span class="orb-mob-name">CJC-1295</span></button>
+    <button class="orb-mob-item" data-pep="6">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="17" font-weight="800" fill="#0a0a0a">Reta</text></svg>
+      <span class="orb-mob-name">Retatrutide</span></button>
+    <button class="orb-mob-item" data-pep="7">
+      <svg class="orb-mob-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,4 L57.7,31.5 L82.5,17.5 L68.5,42.3 L96,50 L68.5,57.7 L82.5,82.5 L57.7,68.5 L50,96 L42.3,68.5 L17.5,82.5 L31.5,57.7 L4,50 L31.5,42.3 L17.5,17.5 L42.3,31.5 Z" fill="var(--g500)"/><text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="'DM Sans',sans-serif" font-size="15" font-weight="800" fill="#0a0a0a">Glow</text></svg>
+      <span class="orb-mob-name">Glow</span></button>
+  </div>
+</section>
+
+<!-- PEPTIDE OVERLAY PANEL -->
+<div id="pep-ov" class="pep-ov" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pov-name">
+  <div id="pov-stars" class="pov-stars" aria-hidden="true"></div>
+  <div class="pov-num-bg" id="pov-num-bg" aria-hidden="true"></div>
+  <button class="pep-ov-x" id="pep-ov-x" aria-label="Close">ESC</button>
+
+  <!-- Top-right: action buttons -->
+  <div class="pep-ov-btns">
+    <button class="pep-ov-btn" id="pov-back">
+      <span class="en">Back</span><span class="es">Volver</span>
+    </button>
+    <button class="pep-ov-btn" onclick="openModal()">
+      <span class="en">Request Treatment</span><span class="es">Solicitar Tratamiento</span>
+    </button>
+  </div>
+
+  <!-- Top-left: category -->
+  <div class="pov-cat" id="pov-cat"></div>
+
+  <!-- Description -->
+  <p class="pov-desc" id="pov-desc"></p>
+
+  <!-- Benefits — manifesto statements -->
+  <ul id="pov-bens" aria-label="Benefits"></ul>
+
+  <!-- Citations -->
+  <div id="pov-refs"></div>
+
+  <!-- Bottom-left: name + tagline -->
+  <div class="pov-hero">
+    <p class="pov-tag" id="pov-tag"></p>
+    <div class="pov-name" id="pov-name" role="heading" aria-level="2"></div>
+  </div>
+
+  <!-- Bottle image — emerges from bottom-right -->
+  <img id="pov-bottle" class="pov-bottle" src="" alt="" aria-hidden="true">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="con" style="max-width:1140px;margin:0 auto;padding:0 60px">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand"><img src="orionlogotype.png" alt="Orión Médica"></div>
+        <p class="ft-tag en">Advanced peptide therapy &amp; longevity medicine in Nuevo Laredo, Tamaulipas. Cross-border patients welcome.</p>
+        <p class="ft-tag es">Terapia avanzada con péptidos y medicina de longevidad en Nuevo Laredo, Tamaulipas.</p>
+        <div class="ft-soc">
+          <a class="ft-sl" href="#" aria-label="Instagram">Ig</a>
+          <a class="ft-sl" href="#" aria-label="WhatsApp">W</a>
+          <a class="ft-sl" href="#" aria-label="Facebook">Fb</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-h en">Navigate</div><div class="ft-h es">Navegar</div>
+        <ul class="ft-ul">
+          <li><a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a></li>
+          <li><a href="index.html#about"><span class="en">About</span><span class="es">Nosotros</span></a></li>
+          <li><a href="index.html#process"><span class="en">Process</span><span class="es">Proceso</span></a></li>
+          <li><a href="index.html#testimonials"><span class="en">Stories</span><span class="es">Historias</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-h en">Contact</div><div class="ft-h es">Contacto</div>
+        <ul class="ft-ul">
+          <li><a href="mailto:info@orionmedica.mx">info@orionmedica.mx</a></li>
+          <li style="color:var(--t3);font-size:13px;line-height:1.6">Nuevo Laredo, Tamaulipas<br>México</li>
+        </ul>
+        <div style="margin-top:20px">
+          <button class="nav-cta" onclick="openModal()" style="font-size:10px;padding:9px 18px">
+            <span class="en">Book Consultation</span><span class="es">Agendar Consulta</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy en">© 2025 Orión Médica. All rights reserved.</span>
+      <span class="ft-copy es">© 2025 Orión Médica. Todos los derechos reservados.</span>
+      <span class="ft-copy" style="color:rgba(245,240,232,.28)">orionmedica.mx</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CONTACT MODAL -->
+<div class="modal-ov" id="modal-ov" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <h2 class="modal-title" id="modal-title">
+      <span class="en">Book a <span class="hi">Consultation</span></span>
+      <span class="es">Agendar una <span class="hi">Consulta</span></span>
+    </h2>
+    <p class="modal-sub en">We'll confirm your appointment within 24 hours.</p>
+    <p class="modal-sub es">Confirmaremos tu cita en menos de 24 horas.</p>
+    <div id="form-wrap">
+      <form class="form" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="fg"><label><span class="en">Name</span><span class="es">Nombre</span></label><input type="text" required autocomplete="name" placeholder="Full name"></div>
+          <div class="fg"><label><span class="en">Email</span><span class="es">Correo</span></label><input type="email" required autocomplete="email" placeholder="your@email.com"></div>
+        </div>
+        <div class="fg">
+          <label><span class="en">Area of interest</span><span class="es">Área de interés</span></label>
+          <select>
+            <option value="" class="en">Select a therapy</option><option value="" class="es">Selecciona una terapia</option>
+            <option>BPC-157 / TB-500</option><option>NAD+</option><option>MOTS-C</option>
+            <option>GHK-Cu</option><option>Glutathione / Glutatión</option><option>CJC-1295</option>
+            <option>Retatrutide</option><option>Glow</option>
+            <option class="en">General Consultation</option><option class="es">Consulta General</option>
+          </select>
+        </div>
+        <div class="fg"><label><span class="en">Message</span><span class="es">Mensaje</span></label><textarea placeholder="Tell us about your health goals..." rows="3"></textarea></div>
+        <p class="form-note en">Your information is strictly confidential. We never share patient data.</p>
+        <p class="form-note es">Tu información es estrictamente confidencial. Nunca compartimos datos de pacientes.</p>
+        <button type="submit" class="btn btn-g" style="width:100%;justify-content:center">
+          <span class="en">Send Request</span><span class="es">Enviar Solicitud</span>
+        </button>
+      </form>
+    </div>
+    <div class="form-ok" id="form-ok" aria-live="polite">
+      <div class="form-ok-title en">Request received.</div><div class="form-ok-title es">Solicitud recibida.</div>
+      <div class="form-ok-sub en">We'll be in touch within 24 hours.</div><div class="form-ok-sub es">Nos pondremos en contacto en 24 horas.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Star field canvas
+(function(){
+  const c=document.getElementById('star-canvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  function resize(){c.width=innerWidth;c.height=c.parentElement.offsetHeight||innerHeight;drawStars()}
+  function drawStars(){
+    ctx.clearRect(0,0,c.width,c.height);
+    const rng=mulberry32(42);
+    for(let i=0;i<320;i++){
+      const x=rng()*c.width,y=rng()*c.height;
+      const r=rng()<0.85?0.5:1.2,a=0.15+rng()*0.7;
+      ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${a})`;ctx.fill();
+    }
+    for(let i=0;i<18;i++){
+      const x=rng()*c.width,y=rng()*c.height;
+      ctx.beginPath();ctx.arc(x,y,0.8,0,Math.PI*2);
+      ctx.fillStyle=`rgba(201,168,76,${0.3+rng()*0.5})`;ctx.fill();
+    }
+  }
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  resize();
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(resize,200)});
+})();
+
+// Cursor
+(function(){
+  const star=document.getElementById('cur-star');
+  if(!star)return;
+  document.addEventListener('mousemove',e=>{
+    star.style.transform=`translate(${e.clientX-10}px,${e.clientY-10}px)`;
+  });
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>star.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>star.classList.remove('hov'));
+  });
+})();
+
+// Progress bar + nav
+const pgbar=document.getElementById('pgbar'),nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.body.scrollHeight-innerHeight);
+  pgbar.style.transform=`scaleX(${Math.min(pct,1)})`;
+  nav.classList.toggle('sc',window.scrollY>80);
+},{passive:true});
+
+// Mobile menu
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+function closeMob(){mob.classList.remove('open');hbg.setAttribute('aria-expanded','false')}
+hbg.addEventListener('click',()=>{const o=mob.classList.toggle('open');hbg.setAttribute('aria-expanded',String(o))});
+
+// Language
+document.querySelectorAll('.lb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const l=btn.dataset.lang;
+    document.documentElement.lang=l;
+    document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  });
+});
+
+// Peptide data
+const pepData=[
+  {
+    num:'01',
+    cat:{en:'Tissue Repair & Gut Health',es:'Reparación Tisular y Salud Intestinal'},
+    nameHtml:'BPC-157 / TB-500',
+    tag:{en:"The body's repair system, activated.",es:'El sistema de reparación del cuerpo, activado.'},
+    desc:{en:"A stable synthetic pentadecapeptide derived from a protective gastric protein. BPC-157 activates the body's own repair cascades — promoting angiogenesis, modulating inflammation, and restoring tissue integrity across multiple systems.",es:'Un pentadecapéptido sintético estable derivado de una proteína gástrica protectora. Activa las cascadas de reparación del propio cuerpo, promoviendo la angiogénesis y restaurando la integridad tisular.'},
+    bens:{en:['Accelerated tissue repair & wound healing','Gut lining integrity & IBD relief','Joint, tendon & ligament recovery'],es:['Reparación acelerada de tejidos y heridas','Integridad de la mucosa intestinal y alivio del EII','Recuperación de articulaciones, tendones y ligamentos']},
+    refs:['Sikiric P, et al. (2018). Stable Gastric Pentadecapeptide BPC 157. <em>Curr Pharm Des.</em> 24(18):1906–22.','Chang CH, et al. (2011). Pentadecapeptide BPC 157 on tendon healing. <em>Eur Surg Res.</em> 48(3):123–31.']
+  },
+  {
+    num:'02',
+    cat:{en:'Cellular Energy & Longevity',es:'Energía Celular y Longevidad'},
+    nameHtml:'NAD+',
+    tag:{en:'Cellular energy at the mitochondrial level.',es:'Energía celular a nivel mitocondrial.'},
+    desc:{en:'A coenzyme central to over 500 cellular reactions, NAD+ is the fuel for mitochondria and the substrate for sirtuins — the longevity enzymes. Levels decline by up to 50% between ages 40 and 60.',es:'Una coenzima central en más de 500 reacciones celulares. El NAD+ es el combustible de las mitocondrias y el sustrato de las sirtuinas. Sus niveles disminuyen hasta un 50% entre los 40 y los 60 años.'},
+    bens:{en:['DNA repair & genomic stability','Mitochondrial energy production','Cognitive clarity & mental energy'],es:['Reparación del ADN y estabilidad genómica','Producción de energía mitocondrial','Claridad cognitiva y energía mental']},
+    refs:['Rajman L, et al. (2018). Therapeutic Potential of NAD-Boosting Molecules. <em>Cell Metab.</em> 27(3):529–47.','Verdin E (2015). NAD+ in aging, metabolism, and neurodegeneration. <em>Science.</em> 350(6265):1208–13.']
+  },
+  {
+    num:'03',
+    cat:{en:'Mitochondrial Longevity',es:'Longevidad Mitocondrial'},
+    nameHtml:'MOTS-C',
+    tag:{en:'The mitochondrial longevity signal.',es:'La señal de longevidad mitocondrial.'},
+    desc:{en:'A microprotein encoded within mitochondrial DNA, MOTS-c travels to the nucleus to regulate metabolic gene expression. It mimics the metabolic effects of exercise and is a key regulator of the aging process.',es:'Una microproteína codificada en el ADN mitocondrial, MOTS-c viaja al núcleo para regular la expresión génica metabólica. Imita los efectos del ejercicio y regula el proceso de envejecimiento.'},
+    bens:{en:['Metabolic regulation & homeostasis','Insulin sensitivity improvement','Longevity signaling pathways (AMPK)'],es:['Regulación metabólica y homeostasis','Mejora de la sensibilidad a la insulina','Vías de señalización de longevidad (AMPK)']},
+    refs:['Lee C, et al. (2015). MOTS-c promotes metabolic homeostasis. <em>Cell Metab.</em> 21(3):443–54.','Kim KH, et al. (2018). MOTS-c regulates longevity in animals. <em>Nat Commun.</em> 9(1):1681.']
+  },
+  {
+    num:'04',
+    cat:{en:'Cellular Renewal & Anti-aging',es:'Renovación Celular y Anti-envejecimiento'},
+    nameHtml:'GHK-Cu',
+    tag:{en:'Copper peptide. Cellular renaissance.',es:'Péptido de cobre. Renacimiento celular.'},
+    desc:{en:'A naturally occurring copper-binding tripeptide found in blood plasma. GHK-Cu declines 60% between ages 20 and 60, and regulates over 4,000 genes involved in tissue repair, anti-inflammation, and anti-aging.',es:'Un tripéptido de unión al cobre que se encuentra en el plasma sanguíneo. GHK-Cu disminuye un 60% entre los 20 y los 60 años, y regula más de 4,000 genes de reparación tisular y anti-envejecimiento.'},
+    bens:{en:['Collagen & elastin synthesis','Wound healing & skin regeneration','Stem cell activation'],es:['Síntesis de colágeno y elastina','Cicatrización y regeneración de la piel','Activación de células madre']},
+    refs:['Pickart L & Margolina A (2018). Regenerative and Protective Actions of GHK-Cu. <em>Biomolecules.</em> 8(3):38.','Pickart L (2008). The human tri-peptide GHK and tissue remodeling. <em>J Biomater Sci.</em> 19(8):969–88.']
+  },
+  {
+    num:'05',
+    cat:{en:'Antioxidant & Detoxification',es:'Antioxidante y Detoxificación'},
+    nameHtml:'Glutathione',
+    tag:{en:'The master antioxidant. Nothing compares.',es:'El antioxidante maestro. Nada se compara.'},
+    desc:{en:"The body's most abundant endogenous antioxidant. Glutathione is a tripeptide synthesized from glycine, cysteine, and glutamic acid — central to every detoxification reaction in the liver and vital for immune function.",es:'El antioxidante endógeno más abundante del cuerpo. Un tripéptido sintetizado a partir de glicina, cisteína y ácido glutámico, central en la detoxificación hepática y vital para la función inmunológica.'},
+    bens:{en:['Oxidative stress reduction','Liver detoxification support','Immune system strengthening'],es:['Reducción del estrés oxidativo','Apoyo a la detoxificación hepática','Fortalecimiento del sistema inmunológico']},
+    refs:['Pizzorno J (2014). Glutathione! <em>Integr Med (Encinitas).</em> 13(1):8–12.','Forman HJ, et al. (2009). Glutathione: overview of its protective roles. <em>Arch Biochem Biophys.</em> 484(2):1–9.']
+  },
+  {
+    num:'06',
+    cat:{en:'Growth Hormone & Body Composition',es:'Hormona de Crecimiento y Composición Corporal'},
+    nameHtml:'CJC-1295',
+    tag:{en:'Growth hormone. Amplified.',es:'Hormona de crecimiento. Amplificada.'},
+    desc:{en:"A synthetic analog of growth hormone releasing hormone (GHRH). CJC-1295 stimulates the pituitary gland to produce GH in its natural pulsatile rhythm — without disrupting the body's feedback mechanisms.",es:'Un análogo sintético de la GHRH. CJC-1295 estimula la hipófisis para producir GH en su ritmo pulsátil natural, sin alterar los sistemas de retroalimentación del cuerpo.'},
+    bens:{en:['Natural GH pulse amplification','Lean muscle support & maintenance','Recovery & deep sleep quality'],es:['Amplificación del pulso natural de GH','Soporte de masa muscular magra','Recuperación y calidad del sueño profundo']},
+    refs:['Teichman SL, et al. (2006). Prolonged stimulation of GH secretion by CJC-1295. <em>J Clin Endocrinol Metab.</em> 91(3):799–805.','Ionescu M & Frohman LA (2006). Pulsatile secretion of growth hormone. <em>J Clin Endocrinol Metab.</em> 91(12):4792–98.']
+  },
+  {
+    num:'07',
+    cat:{en:'Metabolic Health & Weight Management',es:'Salud Metabólica y Control de Peso'},
+    nameHtml:'Retatrutide',
+    tag:{en:'Triple receptor. Transformative results.',es:'Triple receptor. Resultados transformadores.'},
+    desc:{en:"The world's first triple agonist, Retatrutide simultaneously activates GIP, GLP-1, and glucagon receptors. Phase 2 clinical data showed up to 24% body weight reduction — surpassing all other available weight-management interventions.",es:'El primer triple agonista del mundo. Activa simultáneamente los receptores GIP, GLP-1 y glucagón. Los datos de Fase 2 mostraron hasta un 24% de reducción de peso corporal.'},
+    bens:{en:['Up to 24% body weight reduction (Phase 2 data)','Metabolic syndrome & insulin resistance','Cardiovascular risk factor reduction'],es:['Hasta 24% de reducción de peso corporal (Fase 2)','Síndrome metabólico y resistencia a la insulina','Reducción de factores de riesgo cardiovascular']},
+    refs:['Jastreboff AM, et al. (2023). Triple–Hormone-Receptor Agonist Retatrutide for Obesity. <em>N Engl J Med.</em> 389(6):514–26.','Coskun T, et al. (2022). LY3437943, a novel triple GIP, GLP-1 and glucagon receptor agonist. <em>Cell Metab.</em> 34(6):882–98.']
+  },
+  {
+    num:'08',
+    cat:{en:'Skin Radiance & Collagen',es:'Luminosidad y Colágeno'},
+    nameHtml:'Glow',
+    tag:{en:'Radiance. From the inside.',es:'Luminosidad. Desde adentro.'},
+    desc:{en:'A precision skin-regeneration protocol combining bioactive peptides and collagen-stimulating compounds. Targets the dermis directly — rebuilding the collagen matrix, brightening uneven tone, and shielding against oxidative skin aging.',es:'Un protocolo de regeneración cutánea de precisión que combina péptidos bioactivos y compuestos estimulantes de colágeno. Actúa sobre la dermis, reconstruyendo la matriz de colágeno y protegiendo contra el envejecimiento oxidativo.'},
+    bens:{en:['Collagen & elastin synthesis stimulation','Skin brightening & tone evenness','Antioxidant skin protection'],es:['Estimulación de síntesis de colágeno y elastina','Luminosidad de la piel y uniformidad del tono','Protección antioxidante de la piel']},
+    refs:['Kim DU, et al. (2018). Oral Intake of Low-Molecular-Weight Collagen Peptide Improves Hydration. <em>J Med Food.</em> 21(2):188–95.','Proksch E, et al. (2014). Oral supplementation of specific collagen peptides. <em>Skin Pharmacol Physiol.</em> 27(1):47–55.']
+  }
+];
+
+// Scattered star positions for the overlay (centre/empty zones)
+const starPos=[
+  {t:'11%',l:'47%',s:13,d:0,r:2.8},
+  {t:'29%',l:'44%',s:17,d:.7,r:3.5},
+  {t:'45%',l:'49%',s:11,d:1.4,r:2.4},
+  {t:'62%',l:'45%',s:15,d:.3,r:3.1},
+  {t:'80%',l:'48%',s:9,d:1.9,r:2.7},
+  {t:'17%',l:'35%',s:14,d:.5,r:3.4},
+  {t:'37%',l:'3%',s:10,d:2.2,r:2.5},
+  {t:'56%',l:'24%',s:13,d:.9,r:3.8},
+  {t:'87%',l:'57%',s:11,d:1.6,r:2.6},
+  {t:'23%',l:'59%',s:9,d:.1,r:3.2},
+  {t:'51%',l:'63%',s:11,d:2.5,r:2.9},
+  {t:'74%',l:'35%',s:13,d:1.2,r:3.6},
+];
+
+const starSvg=s=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L13.1 10 22 12 13.1 14 12 23 10.9 14 2 12 10.9 10Z" fill="white"/></svg>`;
+
+function addPovStars(){
+  const wrap=document.getElementById('pov-stars');
+  if(!wrap)return;
+  wrap.innerHTML='';
+  starPos.forEach(p=>{
+    const el=document.createElement('div');
+    el.className='pov-star';
+    el.style.cssText=`top:${p.t};left:${p.l};animation-delay:${p.d}s;animation-duration:${p.r}s`;
+    el.innerHTML=starSvg(p.s);
+    wrap.appendChild(el);
+  });
+}
+
+// Peptide bottle images
+const pepImgs=[
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_BPC-157_202606130025-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_NAD+_202606130022-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_MOTS-C_202606130022-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_ghk-cu_202606130022-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_Glutathione_202606130023-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_CJC-1295_202606130026-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read_Retatrutide_202606130026-removebg-preview.png',
+  'peptides/peptides%20no%20bg/Make_the_bottle_read__Glow__202606130022-removebg-preview.png',
+];
+
+// Orbit click
+document.querySelectorAll('.orb-slot,.orb-mob-item').forEach(el=>{
+  el.addEventListener('click',()=>openPepOv(parseInt(el.dataset.pep)));
+});
+
+function openPepOv(idx){
+  const lang=document.documentElement.lang||'en';
+  const d=pepData[idx];
+  document.getElementById('pov-num-bg').textContent=d.num;
+  document.getElementById('pov-cat').textContent=d.cat[lang];
+  document.getElementById('pov-tag').textContent=d.tag[lang];
+  document.getElementById('pov-desc').textContent=d.desc[lang];
+  document.getElementById('pov-bens').innerHTML=d.bens[lang].map(b=>`<li class="pov-ben">${b}</li>`).join('');
+  document.getElementById('pov-refs').innerHTML=d.refs.map((r,i)=>`<p class="pov-ref"><sup>${i+1}</sup> ${r}</p>`).join('');
+
+  // Bottle image
+  const bottleEl=document.getElementById('pov-bottle');
+  bottleEl.src=pepImgs[idx];
+  bottleEl.alt=d.nameHtml;
+
+  // Floating-char name — each character gets independent bob + rotation
+  const nameEl=document.getElementById('pov-name');
+  const rng=()=>Math.random();
+  nameEl.innerHTML=d.nameHtml.split('').map(c=>{
+    if(c===' ')return`<span class="pov-char-sp"> </span>`;
+    const cr=(rng()*14-7).toFixed(1);
+    const cd=(rng()*2.4).toFixed(2);
+    const cf=(2.6+rng()*2).toFixed(2);
+    return`<span class="pov-char" style="--cr:${cr}deg;animation-delay:${cd}s;animation-duration:${cf}s">${c}</span>`;
+  }).join('');
+
+  addPovStars();
+  const ov=document.getElementById('pep-ov');
+  ov.classList.add('open');
+  ov.setAttribute('aria-hidden','false');
+  ov.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+
+function closePepOv(){
+  const ov=document.getElementById('pep-ov');
+  ov.classList.remove('open');
+  ov.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+
+document.getElementById('pep-ov-x').addEventListener('click',closePepOv);
+document.getElementById('pov-back').addEventListener('click',closePepOv);
+document.getElementById('pep-ov').addEventListener('click',e=>{if(e.target===e.currentTarget)closePepOv()});
+
+// Modal
+function openModal(){document.getElementById('modal-ov').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('modal-ov').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('modal-ov').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePepOv();closeModal()}});
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('form-wrap').style.display='none';
+  document.getElementById('form-ok').style.display='block';
+}
+</script>
+</body>
+</html>
